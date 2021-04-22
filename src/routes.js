@@ -70,21 +70,6 @@ const routes = [
         component: lazy(() => import('views/Calendar'))
       },
       {
-        path: '/changelog',
-        exact: true,
-        component: lazy(() => import('views/Changelog'))
-      },
-      {
-        path: '/chat',
-        exact: true,
-        component: lazy(() => import('views/Chat'))
-      },
-      {
-        path: '/chat/:id',
-        exact: true,
-        component: lazy(() => import('views/Chat'))
-      },
-      {
         path: '/dashboards/analytics',
         exact: true,
         component: DashboardAnalyticsView
@@ -93,21 +78,6 @@ const routes = [
         path: '/dashboards/default',
         exact: true,
         component: DashboardDefaultView
-      },
-      {
-        path: '/invoices/:id',
-        exact: true,
-        component: lazy(() => import('views/InvoiceDetails'))
-      },
-      {
-        path: '/kanban-board',
-        exact: true,
-        component: lazy(() => import('views/KanbanBoard'))
-      },
-      {
-        path: '/mail',
-        exact: true,
-        component: lazy(() => import('views/Mail'))
       },
       {
         path: '/management/customers',
