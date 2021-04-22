@@ -10,7 +10,7 @@ import {
   Typography
 } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { GenericMoreButton } from 'components';
 import { Chart } from './components';
 
@@ -53,7 +53,7 @@ const EarningsSegmentation = props => {
     let mounted = true;
 
     const fetchEarnings = () => {
-      axios.get('/api/dashboard/earnings').then(response => {
+      axiosInstance.get('/api/dashboard/earnings').then(response => {
         if (mounted) {
           setEarnings(response.data.earnings);
         }

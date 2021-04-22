@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Divider } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Page } from 'components';
 import { Header, Details } from './components';
 
@@ -26,7 +26,7 @@ const InvoiceDetails = () => {
     let mounted = true;
 
     const fetchInvoice = () => {
-      axios.get('/api/invoices/1').then(response => {
+      axiosInstance.get('/api/invoices/1').then(response => {
         if (mounted) {
           setInvoice(response.data.invoice);
         }

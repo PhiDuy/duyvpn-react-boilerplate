@@ -25,7 +25,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -90,7 +90,7 @@ const Connections = props => {
     let mounted = true;
 
     const fetchConnections = () => {
-      axios.get('/api/users/1/connections').then(response => {
+      axiosInstance.get('/api/users/1/connections').then(response => {
         if (mounted) {
           setConnections(response.data.connections);
         }

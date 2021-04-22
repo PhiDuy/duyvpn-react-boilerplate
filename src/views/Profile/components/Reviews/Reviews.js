@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { OverallReviews, ReviewCard } from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +24,7 @@ const Reviews = props => {
 
     const fetchReviews = () => {
       if (mounted) {
-        axios
+        axiosInstance
           .get('/api/users/1/reviews')
           .then(response => setReviews(response.data.reviews));
       }

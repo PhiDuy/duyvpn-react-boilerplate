@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { Card, Typography, Grid, colors } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Label } from 'components';
 
 const useStyles = makeStyles(theme => ({
@@ -49,7 +49,7 @@ const Statistics = props => {
     let mounted = true;
 
     const fetchStatistics = () => {
-      axios.get('/api/account/statistics').then(response => {
+      axiosInstance.get('/api/account/statistics').then(response => {
         if (mounted) {
           setStatistics(response.data.statistics);
         }

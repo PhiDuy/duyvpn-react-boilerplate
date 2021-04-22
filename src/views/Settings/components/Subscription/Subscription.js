@@ -13,7 +13,7 @@ import {
   Typography
 } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -65,7 +65,7 @@ const Subscription = props => {
     let mounted = true;
 
     const fetchSubscription = () => {
-      axios.get('/api/account/subscription').then(response => {
+      axiosInstance.get('/api/account/subscription').then(response => {
         if (mounted) {
           setSubscription(response.data.subscription);
         }

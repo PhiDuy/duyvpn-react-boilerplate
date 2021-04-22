@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { CustomerInfo, Invoices, SendEmails, OtherActions } from './components';
 
 const useStyles = makeStyles(() => ({
@@ -21,7 +21,7 @@ const Summary = props => {
     let mounted = true;
 
     const fetchCustomer = () => {
-      axios.get('/api/management/customers/1/summary').then(response => {
+      axiosInstance.get('/api/management/customers/1/summary').then(response => {
         if (mounted) {
           setCustomer(response.data.summary);
         }

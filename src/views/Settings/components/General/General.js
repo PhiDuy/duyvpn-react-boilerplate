@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { ProfileDetails, GeneralSettings } from './components';
 
 const useStyles = makeStyles(() => ({
@@ -21,7 +21,7 @@ const General = props => {
     let mounted = true;
 
     const fetchProfile = () => {
-      axios.get('/api/account/profile').then(response => {
+      axiosInstance.get('/api/account/profile').then(response => {
         if (mounted) {
           setProfile(response.data.profile);
         }

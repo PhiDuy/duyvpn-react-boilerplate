@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Tabs, Tab, Divider, colors } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Page, Alert } from 'components';
 import { Header, Overview, Files, Activities, Subscribers } from './components';
 
@@ -40,7 +40,7 @@ const ProjectDetails = props => {
     let mounted = true;
 
     const fetchProject = () => {
-      axios.get('/api/projects/1').then(response => {
+      axiosInstance.get('/api/projects/1').then(response => {
         if (mounted) {
           setProject(response.data.project);
         }

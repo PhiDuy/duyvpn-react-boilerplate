@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Page, PostCard, AddPost } from 'components';
 import { Header } from './components';
 
@@ -32,7 +32,7 @@ const SocialFeed = () => {
     let mounted = true;
 
     const fetchPosts = () => {
-      axios.get('/api/social-feed').then(response => {
+      axiosInstance.get('/api/social-feed').then(response => {
         if (mounted) {
           setPosts(response.data.posts);
         }

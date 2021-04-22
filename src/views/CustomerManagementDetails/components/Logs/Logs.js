@@ -17,7 +17,7 @@ import {
   colors
 } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Label } from 'components';
 
 const useStyles = makeStyles(() => ({
@@ -47,7 +47,7 @@ const Logs = props => {
     let mounted = true;
 
     const fetchLogs = () => {
-      axios.get('/api/management/customers/1/logs').then(response => {
+      axiosInstance.get('/api/management/customers/1/logs').then(response => {
         if (mounted) {
           setLogs(response.data.logs);
         }

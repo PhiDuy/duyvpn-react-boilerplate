@@ -22,7 +22,7 @@ import {
 } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import getInitials from 'utils/getInitials';
 import { Label, GenericMoreButton } from 'components';
 
@@ -64,7 +64,7 @@ const LatestProjects = props => {
     let mounted = true;
 
     const fetchProjects = () => {
-      axios.get('/api/dashboard/latest-projects').then(response => {
+      axiosInstance.get('/api/dashboard/latest-projects').then(response => {
         if (mounted) {
           setProjects(response.data.projects);
         }

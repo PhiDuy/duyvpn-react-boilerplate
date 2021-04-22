@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Page, SearchBar } from 'components';
 import { Header, Results } from './components';
 
@@ -23,7 +23,7 @@ const CustomerManagementList = () => {
     let mounted = true;
 
     const fetchCustomers = () => {
-      axios.get('/api/management/customers').then(response => {
+      axiosInstance.get('/api/management/customers').then(response => {
         if (mounted) {
           setCustomers(response.data.customers);
         }

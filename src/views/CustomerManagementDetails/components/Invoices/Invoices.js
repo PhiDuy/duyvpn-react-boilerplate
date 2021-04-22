@@ -19,7 +19,7 @@ import {
   colors
 } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Label, GenericMoreButton } from 'components';
 
 const useStyles = makeStyles(() => ({
@@ -42,7 +42,7 @@ const Invoices = props => {
     let mounted = true;
 
     const fetchInvoices = () => {
-      axios.get('/api/management/customers/1/invoices').then(response => {
+      axiosInstance.get('/api/management/customers/1/invoices').then(response => {
         if (mounted) {
           setInvoices(response.data.invoices);
         }

@@ -18,7 +18,7 @@ import {
   Link
 } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import getInitials from 'utils/getInitials';
 
 const useStyles = makeStyles(theme => ({
@@ -51,7 +51,7 @@ const CustomerActivity = props => {
     let mounted = true;
 
     const fetchCustomers = () => {
-      axios.get('/api/dashboard/customer-activity').then(response => {
+      axiosInstance.get('/api/dashboard/customer-activity').then(response => {
         if (mounted) {
           setCustomers(response.data.customers);
         }

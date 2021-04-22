@@ -23,7 +23,7 @@ import {
 import AddIcon from '@material-ui/icons/Add';
 import ArchiveIcon from '@material-ui/icons/ArchiveOutlined';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Label } from 'components';
 
 const getLabel = todo => {
@@ -70,7 +70,7 @@ const Todos = props => {
     let mounted = true;
 
     const fetchTodos = () => {
-      axios.get('/api/account/todos').then(response => {
+      axiosInstance.get('/api/account/todos').then(response => {
         if (mounted) {
           setTodos(response.data.todos);
         }

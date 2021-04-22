@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { AddPost, PostCard } from 'components';
 
 const useStyles = makeStyles(theme => ({
@@ -26,7 +26,7 @@ const Timeline = props => {
     let mounted = true;
 
     const fetchPosts = () => {
-      axios.get('/api/users/1/posts').then(response => {
+      axiosInstance.get('/api/users/1/posts').then(response => {
         if (mounted) {
           setPosts(response.data.posts);
         }

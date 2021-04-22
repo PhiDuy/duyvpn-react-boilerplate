@@ -20,7 +20,7 @@ import {
 } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { GenericMoreButton } from 'components';
 import CircularProgress from './components/CircularProgress';
 
@@ -82,7 +82,7 @@ const MostProfitableProducts = props => {
     let mounted = true;
 
     const fetchProducts = () => {
-      axios.get('/api/dashboard/profitable-products').then(response => {
+      axiosInstance.get('/api/dashboard/profitable-products').then(response => {
         if (mounted) {
           setProducts(response.data.products);
         }

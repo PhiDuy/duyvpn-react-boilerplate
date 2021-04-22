@@ -20,7 +20,7 @@ import '@fullcalendar/daygrid/main.css';
 import '@fullcalendar/timegrid/main.css';
 import '@fullcalendar/list/main.css';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Page } from 'components';
 import { AddEditEvent, Toolbar } from './components';
 
@@ -106,7 +106,7 @@ const Calendar = () => {
 
     const fetchEvents = () => {
       if (mounted) {
-        axios
+        axiosInstance
           .get('/api/calendar')
           .then(response => setEvents(response.data.events));
       }

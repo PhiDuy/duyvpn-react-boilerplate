@@ -4,7 +4,7 @@ import _ from 'lodash';
 import uuid from 'uuid/v1';
 import { makeStyles } from '@material-ui/styles';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Page } from 'components';
 import { Header, TaskList, TaskListItem, TaskDetails } from './components';
 
@@ -32,7 +32,7 @@ const KanbanBoard = () => {
     let mounted = true;
 
     const fetchData = () => {
-      axios.get('/api/kanban').then(response => {
+      axiosInstance.get('/api/kanban').then(response => {
         if (mounted) {
           const lists = [];
 

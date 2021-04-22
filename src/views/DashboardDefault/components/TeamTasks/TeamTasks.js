@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { GenericMoreButton } from 'components';
 import { TaskItem } from './components';
 
@@ -44,7 +44,7 @@ const TeamTasks = props => {
     let mounted = true;
 
     const fetchTasks = () => {
-      axios.get('/api/tasks').then(response => {
+      axiosInstance.get('/api/tasks').then(response => {
         if (mounted) {
           setTasks(response.data.tasks);
         }

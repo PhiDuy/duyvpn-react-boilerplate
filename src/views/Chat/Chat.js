@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import useRouter from 'utils/useRouter';
 import { Page } from 'components';
 import {
@@ -59,7 +59,7 @@ const Chat = () => {
     let mounted = true;
 
     const fetchConversations = () => {
-      axios.get('/api/chat/conversations').then(response => {
+      axiosInstance.get('/api/chat/conversations').then(response => {
         if (mounted) {
           setConversations(response.data.conversations);
         }

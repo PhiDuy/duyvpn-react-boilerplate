@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Page } from 'components';
 import { Header, OrderInfo, OrderItems } from './components';
 
@@ -23,7 +23,7 @@ const OrderManagementDetails = () => {
     let mounted = true;
 
     const fetchOrder = () => {
-      axios.get('/api/orders/1').then(response => {
+      axiosInstance.get('/api/orders/1').then(response => {
         if (mounted) {
           setOrder(response.data.order);
         }

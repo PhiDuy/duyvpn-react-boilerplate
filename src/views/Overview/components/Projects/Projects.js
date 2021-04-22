@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Typography, Button } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { ProjectCard } from 'components';
 
 const useStyles = makeStyles(theme => ({
@@ -44,7 +44,7 @@ const Projects = props => {
     let mounted = true;
 
     const fetchProjects = () => {
-      axios.get('/api/account/projects').then(response => {
+      axiosInstance.get('/api/account/projects').then(response => {
         if (mounted) {
           setProjects(response.data.projects);
         }

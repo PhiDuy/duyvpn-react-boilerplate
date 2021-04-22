@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { GenericMoreButton } from 'components';
 
 const useStyles = makeStyles(theme => ({
@@ -54,7 +54,7 @@ const TopReferrals = props => {
     let mounted = true;
 
     const fetchReferrals = () => {
-      axios.get('/api/dashboard/top-referrals').then(response => {
+      axiosInstance.get('/api/dashboard/top-referrals').then(response => {
         if (mounted) {
           setReferrals(response.data.referrals);
         }

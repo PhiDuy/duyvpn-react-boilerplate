@@ -1,0 +1,30 @@
+version: "3"
+services:
+  # mongo:
+  #   image: "mongo:4.2"
+  #   ports:
+  #     - "${MONGO_PORT}:${MONGO_PORT}"
+  #   env_file:
+  #     - .env
+  # redis:
+  #   image: "redis:rc-alpine3.12"
+  #   command: redis-server --requirepass ${REDIS_PWD}
+  #   ports:
+  #     - "${REDIS_PORT}:${REDIS_PORT}"
+  #   env_file:
+  #     - .env
+  server:
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    image: "app:${APP_VER}"
+    build:
+      dockerfile: Dockerfile
+      context: ./
+      target: dev
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    # depends_on:
+    #   - mongo
+    #   - redis

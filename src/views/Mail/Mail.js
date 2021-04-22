@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Page } from 'components';
 import { EmailFolders, EmailList, EmailDetails } from './components';
 
@@ -57,7 +57,7 @@ const Mail = () => {
     let mounted = true;
 
     const fetchEmails = () => {
-      axios.get('/api/mail').then(response => {
+      axiosInstance.get('/api/mail').then(response => {
         if (mounted) {
           setEmails(response.data.emails);
         }

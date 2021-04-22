@@ -22,7 +22,7 @@ import {
 } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Label, GenericMoreButton } from 'components';
 
 const useStyles = makeStyles(theme => ({
@@ -62,7 +62,7 @@ const LatestOrders = props => {
     let mounted = true;
 
     const fetchOrders = () => {
-      axios.get('/api/dashboard/latest-orders').then(response => {
+      axiosInstance.get('/api/dashboard/latest-orders').then(response => {
         if (mounted) {
           setOrders(response.data.orders);
         }

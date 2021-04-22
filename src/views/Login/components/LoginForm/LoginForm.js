@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Button, TextField } from '@material-ui/core';
 
 import useRouter from 'utils/useRouter';
-import { login } from 'actions';
+import { login } from '../../../../redux';
 
 const schema = {
   email: {
@@ -93,8 +93,7 @@ const LoginForm = props => {
     <form
       {...rest}
       className={clsx(classes.root, className)}
-      onSubmit={handleSubmit}
-    >
+      onSubmit={handleSubmit}>
       <div className={classes.fields}>
         <TextField
           error={hasError('email')}
@@ -126,8 +125,7 @@ const LoginForm = props => {
         disabled={!formState.isValid}
         size="large"
         type="submit"
-        variant="contained"
-      >
+        variant="contained">
         Sign in
       </Button>
     </form>

@@ -14,7 +14,7 @@ import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { Paginate } from 'components';
 import { ProjectCard } from 'components';
 
@@ -69,7 +69,7 @@ const Projects = props => {
     let mounted = true;
 
     const fetchProjects = () => {
-      axios.get('/api/projects').then(response => {
+      axiosInstance.get('/api/projects').then(response => {
         if (mounted) {
           setProjects(response.data.projects);
         }

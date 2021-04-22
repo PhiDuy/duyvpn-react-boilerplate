@@ -1,4 +1,11 @@
-import * as actionTypes from 'actions';
+/*
+ * @Author: duyvpn 
+ * @Date: 2021-04-22 09:20:14 
+ * @Last Modified by: duyvpn
+ * @Last Modified time: 2021-04-22 09:26:16
+ */
+
+import Keys from './actionKeys';
 
 const initialState = {
   loggedIn: true,
@@ -14,13 +21,13 @@ const initialState = {
 
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SESSION_LOGIN: {
+    case Keys.SESSION_LOGIN: {
       return {
         ...initialState
       };
     }
 
-    case actionTypes.SESSION_LOGOUT: {
+    case Keys.SESSION_LOGOUT: {
       return {
         ...state,
         loggedIn: false,

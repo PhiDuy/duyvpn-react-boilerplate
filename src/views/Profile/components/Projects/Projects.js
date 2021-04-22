@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import { ProjectCard } from 'components';
 
 const useStyles = makeStyles(() => ({
@@ -22,7 +22,7 @@ const Projects = props => {
 
     const fetchProjects = () => {
       if (mounted) {
-        axios
+        axiosInstance
           .get('/api/users/1/projects')
           .then(response => setProjects(response.data.projects));
       }

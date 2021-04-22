@@ -28,10 +28,10 @@ import InputIcon from '@material-ui/icons/Input';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
-import axios from 'utils/axios';
+import { axiosInstance } from 'utils/mock';
 import useRouter from 'utils/useRouter';
 import { PricingModal, NotificationsPopover } from 'components';
-import { logout } from 'actions';
+import { logout } from '../../../../redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -110,7 +110,7 @@ const TopBar = props => {
     let mounted = true;
 
     const fetchNotifications = () => {
-      axios.get('/api/account/notifications').then(response => {
+      axiosInstance.get('/api/account/notifications').then(response => {
         if (mounted) {
           setNotifications(response.data.notifications);
         }
@@ -170,24 +170,14 @@ const TopBar = props => {
   ];
 
   return (
-    <AppBar
-      {...rest}
-      className={clsx(classes.root, className)}
-      color="primary"
-    >
+    <AppBar {...rest} className={clsx(classes.root, className)} color="primary">
       <Toolbar>
         <RouterLink to="/">
-          <img
-            alt="Logo"
-            src="/images/logos/logo--white.svg"
-          />
+          <img alt="Logo" src="/images/logos/logo--white.svg" />
         </RouterLink>
         <div className={classes.flexGrow} />
         <Hidden smDown>
-          <div
-            className={classes.search}
-            ref={searchRef}
-          >
+          <div className={classes.search} ref={searchRef}>
             <SearchIcon className={classes.searchIcon} />
             <Input
               className={classes.searchInput}
@@ -201,20 +191,15 @@ const TopBar = props => {
             anchorEl={searchRef.current}
             className={classes.searchPopper}
             open={openSearchPopover}
-            transition
-          >
+            transition>
             <ClickAwayListener onClickAway={handleSearchPopverClose}>
-              <Paper
-                className={classes.searchPopperContent}
-                elevation={3}
-              >
+              <Paper className={classes.searchPopperContent} elevation={3}>
                 <List>
                   {popularSearches.map(search => (
                     <ListItem
                       button
                       key={search}
-                      onClick={handleSearchPopverClose}
-                    >
+                      onClick={handleSearchPopverClose}>
                       <ListItemIcon>
                         <SearchIcon />
                       </ListItemIcon>
@@ -228,8 +213,7 @@ const TopBar = props => {
           <Button
             className={classes.trialButton}
             onClick={handlePricingOpen}
-            variant="contained"
-          >
+            variant="contained">
             <LockIcon className={classes.trialIcon} />
             Trial expired
           </Button>
@@ -239,38 +223,29 @@ const TopBar = props => {
             className={classes.notificationsButton}
             color="inherit"
             onClick={handleNotificationsOpen}
-            ref={notificationsRef}
-          >
+            ref={notificationsRef}>
             <Badge
               badgeContent={notifications.length}
               classes={{ badge: classes.notificationsBadge }}
-              variant="dot"
-            >
+              variant="dot">
               <NotificationsIcon />
             </Badge>
           </IconButton>
           <Button
             className={classes.logoutButton}
             color="inherit"
-            onClick={handleLogout}
-          >
+            onClick={handleLogout}>
             <InputIcon className={classes.logoutIcon} />
             Sign out
           </Button>
         </Hidden>
         <Hidden lgUp>
-          <IconButton
-            color="inherit"
-            onClick={onOpenNavBarMobile}
-          >
+          <IconButton color="inherit" onClick={onOpenNavBarMobile}>
             <MenuIcon />
           </IconButton>
         </Hidden>
       </Toolbar>
-      <PricingModal
-        onClose={handlePricingClose}
-        open={pricingModalOpen}
-      />
+      <PricingModal onClose={handlePricingClose} open={pricingModalOpen} />
       <NotificationsPopover
         anchorEl={notificationsRef.current}
         notifications={notifications}
