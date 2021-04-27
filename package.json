@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "env-cmd -f .env react-scripts start",
+    "dev":"PORT=${APP_PORT} react-scripts start",
     "build": "env-cmd -f .env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -4,16 +4,15 @@ ENV https_proxy "http://proxy.hcm.fpt.vn:80"
 
 RUN apk update && apk upgrade && \
     apk add --no-cache git && apk add bash
-# ENV VUE_APP_TVRATING_API_DOMAIN_ENV tvrating-dev.dev
-# ENV VUE_APP_TVRATING_API_PORT_ENV 80
+
 # make the 'app' folder the current working directory
 WORKDIR /app
 # copy both 'package.json' and 'package-lock.json' (if available)
 COPY package*.json ./
 RUN yarn
-
+# RUN npm rebuild node-sass
 FROM base AS dev
-RUN apk add --no-cache bash env-cmd curl busybox-extras
+RUN apk add --no-cache bash curl busybox-extras
 CMD ["yarn","dev"]
 
 FROM base AS builder
