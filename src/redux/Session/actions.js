@@ -7,7 +7,7 @@
 
 import Keys from './actionKeys';
 import { toast } from 'react-toastify';
-import { _login } from 'api/session';
+import { AuthService } from 'api/session';
 
 /**
  * * Catch error of thunk
@@ -54,7 +54,7 @@ export const login = ({ username, password }) => {
     });
 
     try {
-      const response = await _login({ username, password });
+      const response = await AuthService._login({ username, password });
       const { data, status } = response;
 
       if (status === 200) {
