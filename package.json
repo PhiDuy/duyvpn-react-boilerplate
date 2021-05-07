@@ -45,6 +45,7 @@
     "axios-mock-adapter": "^1.17.0",
     "chart.js": "^2.9.2",
     "clsx": "^1.0.4",
+    "dotenv": "^9.0.0",
     "draft-js": "^0.11.0",
     "history": "^4.10.1",
     "immutable": "^4.0.0-rc.12",
