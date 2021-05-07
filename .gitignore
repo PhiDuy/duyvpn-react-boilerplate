@@ -13,6 +13,7 @@
 
 # misc
 .DS_Store
+# warning you must be ignore .env for secure your project
 # /.env
 # /.env.production
 /.env.local

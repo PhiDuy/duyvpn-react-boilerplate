@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   # mongo:
   #   image: "mongo:4.2"
@@ -15,19 +15,21 @@ services:
   #     - .env
   server:
     ports:
-      - "${APP_PORT}:${APP_PORT}"
-    image: "app:${APP_VER}"
+      - ${PORT}:${PORT}
+    image: ${DOCKER_HUB_USERNAME}/${APP_NAME}:${APP_VER}
+    container_name: ${APP_NAME}
     build:
       dockerfile: Dockerfile
       context: ./
       target: dev
-    stdin_open: true
+    stdin_open: true #keep connection unitl compling source done
     environment:
-      APP_PORT: 9090
+      MONGODB: ${MONGODB} #export in container for using in third-party service
     env_file:
       - .env
     volumes:
       - .:/app
+      - /app/node_modules/ #fix node-sass not working
     # depends_on:
     #   - mongo
     #   - redis

@@ -41,7 +41,7 @@ const Header = props => {
         gutterBottom
         variant="overline"
       >
-        Home
+        Home4
       </Typography>
       <Typography
         component="h1"

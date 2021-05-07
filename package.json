@@ -6,8 +6,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev":"PORT=${APP_PORT} react-scripts start",
-    "build": "env-cmd -f .env.production react-scripts build",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -46,7 +46,6 @@
     "chart.js": "^2.9.2",
     "clsx": "^1.0.4",
     "draft-js": "^0.11.0",
-    "env-cmd": "^10.1.0",
     "history": "^4.10.1",
     "immutable": "^4.0.0-rc.12",
     "js-cookie": "^2.2.1",
@@ -70,7 +69,7 @@
     "react-router-config": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.0.1",
-    "react-toastify": "^7.0.3",
+    "react-toastify": "^7.0.4",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
