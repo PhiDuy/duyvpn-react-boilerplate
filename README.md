@@ -37,6 +37,35 @@ A personal structure that comes with plenty of ready-to-use Material-UI© compon
 ### Quick start
 
 - Install dependencies: `npm install` or `yarn`
-- Start the server: `npm run start` or `yarn start`
+- Start the server: `npm run start` or `yarn dev`
 - Views are on: `localhost:3000`
 - Latest node & react versions recommended
+
+### Docker
+
+- Install docker, docker-compose (linux only)
+  
+  ```
+  sudo snap docker
+
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+  sudo chmod +x /usr/local/bin/docker-compose
+
+  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  ```
+- Test the installation.
+
+  ```
+  $ docker -v
+  Docker version 20.10.6, build 370c289
+
+  $ docker-compose --version
+  docker-compose version 1.29.1, build 1110ad01
+  ```
+
+- Start the server:
+  ```
+  docker-compose up
+  ```
+  
